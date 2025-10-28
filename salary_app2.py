@@ -21,8 +21,13 @@ if not os.path.exists(MODEL_PATH):
     st.write("Model downloaded successfully.")
 
 # Load model
-saved = joblib.load(MODEL_PATH)
-model = saved["model"]
+@st.cache_resource
+def load_model():
+    saved = joblib.load("salary_model_r_match.pkl")
+    return saved["model"], saved["encoders"], saved["feature_order"]
+
+model, encoders, feature_order = load_model()
+
 encoders = saved["encoders"]
 feature_order = saved["feature_order"]
 
@@ -477,6 +482,7 @@ st.link_button(label="NSCG 2023 Survey",url="https://ncses.nsf.gov/surveys/natio
 st.subheader("Survey")
 st.text("Please take this quick survey to let us know about your experience!")
 st.link_button(label="Feedback",url="https://forms.office.com/Pages/ResponsePage.aspx?id=2RNYUX1x3UWeypqhnAnW-SVikx1a_l9DriBOVBbK_StUNkM3SUZZMlFVVUdJTUlaWTVGR1JKVlZVRS4u")
+
 
 
 
