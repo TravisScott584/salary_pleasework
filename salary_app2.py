@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import matplotlib.ticker as mtick
 import os
+import requests
 # Load model + encoders
 
 
@@ -477,6 +478,7 @@ st.link_button(label="NSCG 2023 Survey",url="https://ncses.nsf.gov/surveys/natio
 st.subheader("Survey")
 st.text("Please take this quick survey to let us know about your experience!")
 st.link_button(label="Feedback",url="https://forms.office.com/Pages/ResponsePage.aspx?id=2RNYUX1x3UWeypqhnAnW-SVikx1a_l9DriBOVBbK_StUNkM3SUZZMlFVVUdJTUlaWTVGR1JKVlZVRS4u")
+
 
 
 
