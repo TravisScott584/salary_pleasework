@@ -10,16 +10,15 @@ import requests
 # Load model + encoders
 
 
-MODEL_URL = "https://github.com/TravisScott584/salary_pleasework/releases/download/v1.0/salary_model_r_match.pkl"
+MODEL_URL = "https://huggingface.co/TravisScott584/salary-predictor-model/resolve/main/salary_model_r_match.pkl"
 MODEL_PATH = "salary_model_r_match.pkl"
 
-# Download model if not present
 if not os.path.exists(MODEL_PATH):
-    print("Downloading model...")
-    r = requests.get(MODEL_URL)
-    r.raise_for_status()
+    st.write("Downloading model from Hugging Face...")
+    response = requests.get(MODEL_URL)
     with open(MODEL_PATH, "wb") as f:
-        f.write(r.content)
+        f.write(response.content)
+    st.write("Model downloaded successfully.")
 
 # Load model
 saved = joblib.load(MODEL_PATH)
@@ -478,6 +477,7 @@ st.link_button(label="NSCG 2023 Survey",url="https://ncses.nsf.gov/surveys/natio
 st.subheader("Survey")
 st.text("Please take this quick survey to let us know about your experience!")
 st.link_button(label="Feedback",url="https://forms.office.com/Pages/ResponsePage.aspx?id=2RNYUX1x3UWeypqhnAnW-SVikx1a_l9DriBOVBbK_StUNkM3SUZZMlFVVUdJTUlaWTVGR1JKVlZVRS4u")
+
 
 
 
